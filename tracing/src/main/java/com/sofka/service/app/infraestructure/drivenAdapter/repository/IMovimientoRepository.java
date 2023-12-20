@@ -12,4 +12,6 @@ public interface IMovimientoRepository extends ReactiveMongoRepository<Movimient
 
 	public Flux<Movimiento> findAllByEsErrorFalseAndTipoProcesoAndIdObjeto(String tipo, String idObject);
 
+	public Flux<Movimiento> findAllByEsErrorFalseAndTipoProcesoAndTipoVenta(String tipo, String tipoVenta);
+
 }

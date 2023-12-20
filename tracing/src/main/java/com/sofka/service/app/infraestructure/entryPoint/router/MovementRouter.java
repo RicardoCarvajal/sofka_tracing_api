@@ -43,4 +43,18 @@ public class MovementRouter {
 		return route(GET("/api/movement/product/{id}"), movementHandler::getMovementProduct);
 	}
 
+	@Bean
+	@RouterOperation(path = "/api/movement/sale/retail", produces = MediaType.APPLICATION_JSON_VALUE, beanClass = MovementHandler.class, beanMethod = "getMovementSaleRetail", method = RequestMethod.GET, operation = @Operation(operationId = "getMovementSaleRetail", tags = "Caso de uso obtener movimientos de ventas al detal", responses = {
+			@ApiResponse(responseCode = "200", description = "Movimientos encontrados con errores", content = @Content(schema = @Schema(implementation = Movimiento.class))) }))
+	public RouterFunction<ServerResponse> getSaleRetail(MovementHandler movementHandler) {
+		return route(GET("/api/movement/sale/retail"), movementHandler::getMovementSaleRetail);
+	}
+
+	@Bean
+	@RouterOperation(path = "/api/movement/sale/mayor", produces = MediaType.APPLICATION_JSON_VALUE, beanClass = MovementHandler.class, beanMethod = "getMovementSaleMayor", method = RequestMethod.GET, operation = @Operation(operationId = "getMovementSaleMayor", tags = "Caso de uso obtener movimientos de ventas al mayor", responses = {
+			@ApiResponse(responseCode = "200", description = "Movimientos encontrados con errores", content = @Content(schema = @Schema(implementation = Movimiento.class))) }))
+	public RouterFunction<ServerResponse> getSaleMayor(MovementHandler movementHandler) {
+		return route(GET("/api/movement/sale/mayor"), movementHandler::getMovementSaleMayor);
+	}
+
 }
