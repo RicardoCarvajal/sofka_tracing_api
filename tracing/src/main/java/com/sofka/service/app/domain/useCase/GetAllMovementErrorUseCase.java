@@ -8,16 +8,16 @@ import com.sofka.service.app.infraestructure.drivenAdapter.repository.IMovimient
 import reactor.core.publisher.Flux;
 
 @Service
-public class GetAllMovement {
+public class GetAllMovementErrorUseCase {
 
 	private final IMovimientoRepository iMovimientoRepository;
 
-	public GetAllMovement(IMovimientoRepository iMovimientoRepository) {
+	public GetAllMovementErrorUseCase(IMovimientoRepository iMovimientoRepository) {
 		this.iMovimientoRepository = iMovimientoRepository;
 	}
 
-	public Flux<Movimiento> get() {
-		return iMovimientoRepository.findAll();
+	public Flux<Movimiento> getError() {
+		return iMovimientoRepository.findAllByEsError(true);
 	}
 
 }
